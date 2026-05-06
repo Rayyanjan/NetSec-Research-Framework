@@ -1,0 +1,306 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" font-family="Calibri, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arrUp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/>
+    </marker>
+    <marker id="arrDown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2a8083"/>
+    </marker>
+    <marker id="arrUnlearn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c87f2a"/>
+    </marker>
+    <marker id="arrAdv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b03a2e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <text x="590" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1f4e79">FU-IDS — Two-Tier Hierarchical Architecture</text>
+  <text x="590" y="56" text-anchor="middle" font-size="12" fill="#555">Federated Learning Engine (blue) · Unlearning Module (orange) · Privacy Certification Layer (green)</text>
+
+  <!-- ===================== CLOUD TIER (T2) ===================== -->
+  <rect x="60" y="80" width="1060" height="220" rx="10" fill="#eaf2fa" stroke="#1f4e79" stroke-width="1.5"/>
+  <text x="80" y="106" font-size="14" font-weight="700" fill="#1f4e79">CLOUD TIER (T2) · Global Server S</text>
+  <text x="1100" y="106" text-anchor="end" font-size="11" font-style="italic" fill="#888">Honest-but-Curious</text>
+
+  <!-- Cloud sub-box: Global Model -->
+  <rect x="90" y="125" width="240" height="78" rx="6" fill="#1f4e79"/>
+  <text x="210" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Global IDS Model</text>
+  <text x="210" y="167" text-anchor="middle" font-size="10.5" fill="#d6e6f5">FedAvg aggregation</text>
+  <text x="210" y="183" text-anchor="middle" font-size="10.5" fill="#d6e6f5">Focal loss (γ=2.0)</text>
+  <text x="210" y="198" text-anchor="middle" font-size="10.5" fill="#d6e6f5">BiLSTM-Attention</text>
+
+  <!-- Cloud sub-box: Sliding Window -->
+  <rect x="350" y="125" width="240" height="78" rx="6" fill="#c87f2a"/>
+  <text x="470" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Sliding-Window Store</text>
+  <text x="470" y="167" text-anchor="middle" font-size="10.5" fill="#fdebd3">Per-client gradient history</text>
+  <text x="470" y="183" text-anchor="middle" font-size="10.5" fill="#fdebd3">Window size W = 10</text>
+  <text x="470" y="198" text-anchor="middle" font-size="10.5" fill="#fdebd3">Enables O(W) calibration</text>
+
+  <!-- Cloud sub-box: Privacy Cert -->
+  <rect x="610" y="125" width="240" height="78" rx="6" fill="#2c8a4d"/>
+  <text x="730" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Privacy Certification Layer</text>
+  <text x="730" y="167" text-anchor="middle" font-size="10.5" fill="#d6f0df">(ε, δ)-DP noise injection</text>
+  <text x="730" y="183" text-anchor="middle" font-size="10.5" fill="#d6f0df">MIA verification battery</text>
+  <text x="730" y="198" text-anchor="middle" font-size="10.5" fill="#d6f0df">GDPR Art. 17 evidence</text>
+
+  <!-- Cloud sub-box: Unlearning Orchestrator -->
+  <rect x="870" y="125" width="220" height="78" rx="6" fill="#c87f2a"/>
+  <text x="980" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Unlearning Orchestrator</text>
+  <text x="980" y="167" text-anchor="middle" font-size="10.5" fill="#fdebd3">SlideFU calibrator</text>
+  <text x="980" y="183" text-anchor="middle" font-size="10.5" fill="#fdebd3">UnlearnGuard PCA filter</text>
+  <text x="980" y="198" text-anchor="middle" font-size="10.5" fill="#fdebd3">Trust score, τ = 0.65</text>
+
+  <!-- Cloud bottom: Request handling -->
+  <rect x="90" y="220" width="1000" height="62" rx="6" fill="#fff" stroke="#1f4e79" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="590" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#1f4e79">Deletion-Request Channel</text>
+  <text x="590" y="258" text-anchor="middle" font-size="11" fill="#555">Authenticated submission · Rate-limiting · Tamper-evident audit log</text>
+  <text x="590" y="273" text-anchor="middle" font-size="10.5" font-style="italic" fill="#777">Inputs: GDPR erasure requests, compromise alerts, client churn events</text>
+
+  <!-- ===================== Fog tier ===================== -->
+  <text x="80" y="335" font-size="14" font-weight="700" fill="#2a8083">FOG TIER (T1) · Regional Aggregators · Honest (baseline)</text>
+
+  <!-- 5 fog boxes -->
+  <g id="fogboxes">
+    <!-- F1 -->
+    <rect x="80" y="350" width="195" height="100" rx="6" fill="#e0f0f0" stroke="#2a8083" stroke-width="1.5"/>
+    <text x="177" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c5f63">Fog Aggregator F₁</text>
+    <text x="177" y="391" text-anchor="middle" font-size="10.5" fill="#333">Regional FedAvg</text>
+    <text x="177" y="407" text-anchor="middle" font-size="10.5" fill="#333">Per-client gradient buffer</text>
+    <text x="177" y="423" text-anchor="middle" font-size="10.5" fill="#333">Local SlideFU calibration</text>
+    <text x="177" y="441" text-anchor="middle" font-size="10" font-style="italic" fill="#666">manages 10–30 edge nodes</text>
+
+    <rect x="290" y="350" width="195" height="100" rx="6" fill="#e0f0f0" stroke="#2a8083" stroke-width="1.5"/>
+    <text x="387" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c5f63">Fog Aggregator F₂</text>
+    <text x="387" y="391" text-anchor="middle" font-size="10.5" fill="#333">Regional FedAvg</text>
+    <text x="387" y="407" text-anchor="middle" font-size="10.5" fill="#333">Per-client gradient buffer</text>
+    <text x="387" y="423" text-anchor="middle" font-size="10.5" fill="#333">Local SlideFU calibration</text>
+    <text x="387" y="441" text-anchor="middle" font-size="10" font-style="italic" fill="#666">manages 10–30 edge nodes</text>
+
+    <rect x="500" y="350" width="195" height="100" rx="6" fill="#e0f0f0" stroke="#2a8083" stroke-width="1.5"/>
+    <text x="597" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c5f63">Fog Aggregator F₃</text>
+    <text x="597" y="391" text-anchor="middle" font-size="10.5" fill="#333">Regional FedAvg</text>
+    <text x="597" y="407" text-anchor="middle" font-size="10.5" fill="#333">Per-client gradient buffer</text>
+    <text x="597" y="423" text-anchor="middle" font-size="10.5" fill="#333">Local SlideFU calibration</text>
+    <text x="597" y="441" text-anchor="middle" font-size="10" font-style="italic" fill="#666">manages 10–30 edge nodes</text>
+
+    <rect x="710" y="350" width="195" height="100" rx="6" fill="#e0f0f0" stroke="#2a8083" stroke-width="1.5"/>
+    <text x="807" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c5f63">Fog Aggregator F₄</text>
+    <text x="807" y="391" text-anchor="middle" font-size="10.5" fill="#333">Regional FedAvg</text>
+    <text x="807" y="407" text-anchor="middle" font-size="10.5" fill="#333">Per-client gradient buffer</text>
+    <text x="807" y="423" text-anchor="middle" font-size="10.5" fill="#333">Local SlideFU calibration</text>
+    <text x="807" y="441" text-anchor="middle" font-size="10" font-style="italic" fill="#666">manages 10–30 edge nodes</text>
+
+    <rect x="920" y="350" width="195" height="100" rx="6" fill="#e0f0f0" stroke="#2a8083" stroke-width="1.5"/>
+    <text x="1017" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c5f63">Fog Aggregator F₅</text>
+    <text x="1017" y="391" text-anchor="middle" font-size="10.5" fill="#333">Regional FedAvg</text>
+    <text x="1017" y="407" text-anchor="middle" font-size="10.5" fill="#333">Per-client gradient buffer</text>
+    <text x="1017" y="423" text-anchor="middle" font-size="10.5" fill="#333">Local SlideFU calibration</text>
+    <text x="1017" y="441" text-anchor="middle" font-size="10" font-style="italic" fill="#666">manages 10–30 edge nodes</text>
+  </g>
+
+  <!-- Cloud-Fog connecting arrows -->
+  <!-- Up arrows (regional gradients) -->
+  <line x1="160" y1="350" x2="160" y2="285" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+  <line x1="370" y1="350" x2="370" y2="285" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+  <line x1="580" y1="350" x2="580" y2="285" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+  <line x1="790" y1="350" x2="790" y2="285" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+  <line x1="1000" y1="350" x2="1000" y2="285" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+
+  <!-- Down arrows (global broadcast) -->
+  <line x1="195" y1="285" x2="195" y2="350" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+  <line x1="405" y1="285" x2="405" y2="350" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+  <line x1="615" y1="285" x2="615" y2="350" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+  <line x1="825" y1="285" x2="825" y2="350" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+  <line x1="1035" y1="285" x2="1035" y2="350" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+
+  <!-- Targeted unlearning command (orange dashed) - example to F3 -->
+  <line x1="980" y1="205" x2="600" y2="350" stroke="#c87f2a" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrUnlearn)"/>
+  <text x="690" y="305" font-size="10.5" font-style="italic" fill="#c87f2a" font-weight="700">③ targeted unlearn cmd</text>
+
+  <!-- ===================== Edge tier ===================== -->
+  <text x="80" y="490" font-size="14" font-weight="700" fill="#4a5568">EDGE TIER · IDS Clients · Untrusted</text>
+
+  <!-- Edge clients - 4 per fog (simplified visualization) -->
+  <g id="edgeboxes">
+    <!-- Group F1 -->
+    <rect x="80" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="101" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₁</text>
+    <text x="101" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="101" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="101" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="129" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="150" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₂</text>
+    <text x="150" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="150" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="150" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="178" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="199" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₃</text>
+    <text x="199" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="199" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="199" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="227" y="510" width="42" height="70" rx="4" fill="#fdecdb" stroke="#b03a2e" stroke-width="1.6"/>
+    <text x="248" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#b03a2e">E₄</text>
+    <text x="248" y="546" text-anchor="middle" font-size="8.5" fill="#b03a2e">poisoned</text>
+    <text x="248" y="558" text-anchor="middle" font-size="8.5" fill="#b03a2e">A₁</text>
+    <text x="248" y="572" text-anchor="middle" font-size="8" fill="#b03a2e">↻ unlearn</text>
+
+    <!-- Group F2 -->
+    <rect x="290" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="311" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₅</text>
+    <text x="311" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="311" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="311" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="339" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="360" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₆</text>
+    <text x="360" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="360" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="360" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="388" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="409" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₇</text>
+    <text x="409" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="409" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="409" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="437" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="458" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₈</text>
+    <text x="458" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="458" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="458" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <!-- Group F3 -->
+    <rect x="500" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="521" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#333">E₉</text>
+    <text x="521" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="521" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="521" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="549" y="510" width="42" height="70" rx="4" fill="#fdecdb" stroke="#b03a2e" stroke-width="1.6"/>
+    <text x="570" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#b03a2e">E₁₀</text>
+    <text x="570" y="544" text-anchor="middle" font-size="8.5" fill="#b03a2e">BadUnl.</text>
+    <text x="570" y="556" text-anchor="middle" font-size="8.5" fill="#b03a2e">A₂</text>
+    <text x="570" y="572" text-anchor="middle" font-size="8" fill="#b03a2e">crafted Δ</text>
+
+    <rect x="598" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="619" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₁</text>
+    <text x="619" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="619" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="619" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="647" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="668" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₂</text>
+    <text x="668" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="668" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="668" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <!-- Group F4 -->
+    <rect x="710" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="731" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₃</text>
+    <text x="731" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="731" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="731" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="759" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="780" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₄</text>
+    <text x="780" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="780" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="780" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="808" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="829" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₅</text>
+    <text x="829" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="829" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="829" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="857" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="878" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₆</text>
+    <text x="878" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="878" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="878" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <!-- Group F5 -->
+    <rect x="920" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="941" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₇</text>
+    <text x="941" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="941" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="941" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="969" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="990" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₈</text>
+    <text x="990" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="990" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="990" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="1018" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="1039" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₁₉</text>
+    <text x="1039" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="1039" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="1039" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+
+    <rect x="1067" y="510" width="42" height="70" rx="4" fill="#fff" stroke="#4a5568" stroke-width="1"/>
+    <text x="1088" y="528" text-anchor="middle" font-size="10" font-weight="700" fill="#333">E₂₀</text>
+    <text x="1088" y="546" text-anchor="middle" font-size="8.5" fill="#555">BiLSTM</text>
+    <text x="1088" y="558" text-anchor="middle" font-size="8.5" fill="#555">+Attn</text>
+    <text x="1088" y="572" text-anchor="middle" font-size="8" fill="#777">IDS</text>
+  </g>
+
+  <!-- Edge → Fog arrows (gradient updates) - sampled lines -->
+  <line x1="100" y1="510" x2="100" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="248" y1="510" x2="248" y2="455" stroke="#b03a2e" stroke-width="1.4" marker-end="url(#arrAdv)"/>
+  <line x1="311" y1="510" x2="311" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="458" y1="510" x2="458" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="521" y1="510" x2="521" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="570" y1="510" x2="570" y2="455" stroke="#b03a2e" stroke-width="1.4" stroke-dasharray="3 2" marker-end="url(#arrAdv)"/>
+  <line x1="668" y1="510" x2="668" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="731" y1="510" x2="731" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="878" y1="510" x2="878" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="941" y1="510" x2="941" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+  <line x1="1088" y1="510" x2="1088" y2="455" stroke="#1f4e79" stroke-width="1.2" marker-end="url(#arrUp)"/>
+
+  <!-- A4: Spurious deletion request channel -->
+  <line x1="20" y1="252" x2="78" y2="252" stroke="#b03a2e" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrAdv)"/>
+  <text x="20" y="246" font-size="10" font-weight="700" fill="#b03a2e">A₄ flood</text>
+  <text x="20" y="266" font-size="9" fill="#b03a2e">deletion reqs</text>
+
+  <!-- A3: Honest-but-curious cloud (annotation) -->
+  <text x="1100" y="138" text-anchor="end" font-size="10" font-weight="700" fill="#b03a2e" font-style="italic">⚠ A₃: gradient inspection</text>
+
+  <!-- ===================== Numbered flow legend ===================== -->
+  <rect x="60" y="615" width="1060" height="245" rx="8" fill="#fff" stroke="#ccc" stroke-width="1"/>
+
+  <text x="80" y="640" font-size="13" font-weight="700" fill="#1f4e79">Data &amp; Control Flow</text>
+  <line x1="100" y1="655" x2="140" y2="655" stroke="#1f4e79" stroke-width="1.6" marker-end="url(#arrUp)"/>
+  <text x="148" y="659" font-size="10.5" fill="#333">① Edge gradient updates → Fog → Cloud (training round)</text>
+  <line x1="100" y1="675" x2="140" y2="675" stroke="#2a8083" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#arrDown)"/>
+  <text x="148" y="679" font-size="10.5" fill="#333">② Global model broadcast → Fog → Edge (post-aggregation)</text>
+  <line x1="100" y1="695" x2="140" y2="695" stroke="#c87f2a" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrUnlearn)"/>
+  <text x="148" y="699" font-size="10.5" fill="#333">③ Targeted unlearn command (Cloud → specific Fog → SlideFU calibration on identified clients)</text>
+  <line x1="100" y1="715" x2="140" y2="715" stroke="#b03a2e" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arrAdv)"/>
+  <text x="148" y="719" font-size="10.5" fill="#333">④ Adversarial channels (A₁ poisoning, A₂ BadUnlearn calibration, A₄ spurious deletion request flood)</text>
+
+  <text x="600" y="640" font-size="13" font-weight="700" fill="#1f4e79">Three Components ↔ Defender Goals (Threat Model §3.4)</text>
+  <rect x="600" y="650" width="14" height="14" fill="#1f4e79"/>
+  <text x="620" y="661" font-size="10.5" fill="#333"><tspan font-weight="700">FL Training Engine</tspan> → DG₁ Utility (Δ ≤ 1.5%)</text>
+  <rect x="600" y="671" width="14" height="14" fill="#c87f2a"/>
+  <text x="620" y="682" font-size="10.5" fill="#333"><tspan font-weight="700">Unlearning Module (SlideFU + UnlearnGuard)</tspan> → DG₃ BadUnlearn resistance (ASR &lt; 10%), DG₄ cost ≤ 30% retrain</text>
+  <rect x="600" y="692" width="14" height="14" fill="#2c8a4d"/>
+  <text x="620" y="703" font-size="10.5" fill="#333"><tspan font-weight="700">Privacy Certification Layer</tspan> → DG₂ Certified erasure (ε ≤ 1.0, MIA ≈ 50%)</text>
+  <rect x="600" y="713" width="14" height="14" fill="#fff" stroke="#1f4e79" stroke-dasharray="3 2"/>
+  <text x="620" y="724" font-size="10.5" fill="#333"><tspan font-weight="700">Fog audit log + rate-limit</tspan> → DG₅ Forensic auditability</text>
+
+  <text x="80" y="755" font-size="13" font-weight="700" fill="#1f4e79">Adversaries (Threat Model §3.2)</text>
+  <text x="100" y="775" font-size="10.5" fill="#333"><tspan fill="#b03a2e" font-weight="700">A₁ Poisoning Client</tspan> — gradients crafted during training (e.g., E₄)</text>
+  <text x="100" y="794" font-size="10.5" fill="#333"><tspan fill="#b03a2e" font-weight="700">A₂ BadUnlearn (Adversarial Unlearning Requester)</tspan> — crafts updates during the unlearning round itself (e.g., E₁₀)</text>
+  <text x="100" y="813" font-size="10.5" fill="#333"><tspan fill="#b03a2e" font-weight="700">A₃ Honest-but-Curious Server</tspan> — inspects aggregated gradients/calibration vectors at the cloud</text>
+  <text x="100" y="832" font-size="10.5" fill="#333"><tspan fill="#b03a2e" font-weight="700">A₄ Spurious Deletion Requester</tspan> — floods authenticated deletion requests to exhaust the unlearning budget</text>
+  <text x="100" y="852" font-size="10" font-style="italic" fill="#777">(Defenses mapped to surfaces in Threat Model §3.3, integrated by FU-IDS components above)</text>
+
+</svg>
